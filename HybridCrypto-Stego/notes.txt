@@ -1,0 +1,18 @@
+1. Encrypt data with AES(symmetric) first in _encrypt_sync func -- Ln 28 (check the value with 
+                                                                            test data and compare if same with AES encryption outside)
+
+2. then encrypt AES encrypted data with RSA(asymmetric) in encrypt func -- Ln 53
+
+3. Same story for _decrypt_sync and decrypt funcs
+
+
+
+payload = '{"v": {"test": "demo"}}'
+
+key = b'71ae0915dace4d928a8baa602f291df6'
+
+nonce = b'\x1c\xc1\xbc\xa90\xc6\xf0Ck_IW\xef\x19m\xb0'
+
+encrypted = b'\xae:{<\xf8EJ\xdb\x10\x87+\x07ov^\xec\x121\x9f@\xc3\xb9\xca'
+
+base64.b64encode(nonce + encrypted).decode()
